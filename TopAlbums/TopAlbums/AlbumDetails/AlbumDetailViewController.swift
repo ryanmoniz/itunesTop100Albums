@@ -36,6 +36,16 @@ class AlbumDetailViewController: UIViewController {
         }
     }
     
+    func refreshUI() {
+        DispatchQueue.main.async {
+            if let _albumArtImage = self.albumArtImage {
+                self.albumImageView.image = _albumArtImage
+            } else {
+                self.albumImageView.image = UIImage(named: "album-unknown")
+            }
+        }
+    }
+    
     @IBAction func purchaseAction(_ sender: Any) {
         //https://itunes.apple.com/us/album/igor/1463409338?app=itunes
         if let albumURL = viewModel.albumURL {

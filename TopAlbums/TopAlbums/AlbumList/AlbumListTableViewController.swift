@@ -8,6 +8,8 @@
 
 import UIKit
 
+public typealias AlbumArtCallback = (_ success:Bool, _ image:UIImage?) -> Void
+
 class AlbumListTableViewController: UITableViewController {
 
     fileprivate var viewModel = [AlbumsViewModel]()
@@ -106,6 +108,7 @@ class AlbumListTableViewController: UITableViewController {
         
         cell.configureCell(viewModel: viewModel[indexPath.row])
         
+        
         //Future: wrap code inside NSOperation task
         if (self.cache.object(forKey: (indexPath as NSIndexPath).row as AnyObject) != nil) {
             //use the cache image
@@ -140,6 +143,46 @@ class AlbumListTableViewController: UITableViewController {
 
         return cell
     }
+    
+    func getAlbumArt(callback: @escaping AlbumArtCallback) {
+        //use the cache image
+        if let indexPath = tableView.indexPathForSelectedRow {
+            if (self.cache.object(forKey: (indexPath as NSIndexPath).row as AnyObject) != nil) {
+                let image = self.cache.object(forKey: (indexPath as NSIndexPath).row as AnyObject) as? UIImage
+                callback(true, image)
+            }
+            else {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    if let _imageURL = viewModel[indexPath.row].albumArtURL {
+                        task = session.downloadTask(with: _imageURL, completionHandler: { (location, response, error) in
+                            if let _location = location {
+                                do {
+                                    let data = try Data(contentsOf: _location)
+                                    DispatchQueue.main.async {
+                                        if let img = UIImage(data: data) {
+                                            self.cache.setObject(img, forKey: (indexPath as NSIndexPath).row as AnyObject)
+                                            callback(true, img)
+                                        } else {
+                                            NSLog("error could not decode image?")
+                                            callback(true, UIImage(named: "album-unknown"))
+                                        }
+                                    }
+                                } catch {
+                                    NSLog("error:\(error.localizedDescription)")
+                                    callback(true, UIImage(named: "album-unknown"))
+                                }
+                            } else {
+                                NSLog("could not download album artwork?")
+                                callback(true, UIImage(named: "album-unknown"))
+                            }
+                        })
+                        task.resume()
+                    }
+                }
+            } //end of else
+        }
+        callback(false, nil)
+    }
 
     // MARK: - Navigation
 
@@ -149,7 +192,12 @@ class AlbumListTableViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let _selectedViewModel = viewModel[indexPath.row]
                 viewController.viewModel = _selectedViewModel
-                viewController.albumArtImage = self.cache.object(forKey: indexPath.row as AnyObject) as? UIImage
+                getAlbumArt { (success, image) in
+                    if let _image = image {
+                        viewController.albumArtImage = _image
+                        viewController.refreshUI()
+                    }
+                }
             }
         }
     }
