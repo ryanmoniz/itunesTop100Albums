@@ -12,8 +12,17 @@ class AlbumListTableViewController: UITableViewController {
 
     fileprivate var viewModel = [AlbumsViewModel]()
     
+    var session: URLSession!
+    var task: URLSessionDownloadTask!
+    var cache:NSCache<AnyObject, AnyObject> = NSCache()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        session = URLSession.shared
+        task = URLSessionDownloadTask()
+        cache = NSCache()
 
         let bundle = Bundle(for: type(of: self))
         guard let _jsonFilePath = bundle.url(forResource: "top100albums", withExtension: "json") else {
@@ -21,9 +30,7 @@ class AlbumListTableViewController: UITableViewController {
             return
         }
                 
-        do {
-            let jsonData = try Data(contentsOf: _jsonFilePath, options: .mappedIfSafe)
-            
+        do {            
             let jsonString = try String(contentsOf: _jsonFilePath)
             if let jsonData = jsonString.data(using: .utf8) {
                 let decoder = JSONDecoder()
@@ -62,6 +69,10 @@ class AlbumListTableViewController: UITableViewController {
         }
     }
 
+    func refreshTableViewWithAlbumArt() {
+        
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -79,6 +90,37 @@ class AlbumListTableViewController: UITableViewController {
         }
         
         cell.configureCell(viewModel: viewModel[indexPath.row])
+        
+        if (self.cache.object(forKey: (indexPath as NSIndexPath).row as AnyObject) != nil) {
+            //use the cache image
+            cell.albumArtwork.image = self.cache.object(forKey: (indexPath as NSIndexPath).row as AnyObject) as? UIImage
+        } else {
+            if let _imageURL = viewModel[indexPath.row].albumArtURL {
+                task = session.downloadTask(with: _imageURL, completionHandler: { (location, response, error) in
+                    if let _location = location {
+                        do {
+                            let data = try Data(contentsOf: _location)
+                            DispatchQueue.main.async {
+                                if let img = UIImage(data: data) {
+                                    cell.albumArtwork.image = img
+                                    self.cache.setObject(img, forKey: (indexPath as NSIndexPath).row as AnyObject)
+                                } else {
+                                    NSLog("error could not decode image?")
+                                    cell.albumArtwork.image = UIImage(named: "album-unknown")
+                                }
+                            }
+                        } catch {
+                            NSLog("error:\(error.localizedDescription)")
+                            cell.albumArtwork.image = UIImage(named: "album-unknown")
+                        }
+                    } else {
+                        NSLog("could not download album artwork?")
+                        cell.albumArtwork.image = UIImage(named: "album-unknown")
+                    }
+                })
+                task.resume()
+            }
+        }
 
         return cell
     }
