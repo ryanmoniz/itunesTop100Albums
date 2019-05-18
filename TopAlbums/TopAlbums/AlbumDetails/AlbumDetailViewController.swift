@@ -37,15 +37,17 @@ class AlbumDetailViewController: UIViewController {
     }
     
     @IBAction func purchaseAction(_ sender: Any) {
-        //https://itunes.apple.com/us/album/igor/1463409338?app=music
-        let baseURL = "https://itunes.apple.com/us/album/igor/1463409338"
-        let urlString = baseURL + "?app=itunes"
-        UIApplication.shared.open(URL(string:urlString)!, options: [:]) { (success) in
-            if success {
-                NSLog("opened iTunes Store app")
-            } else {
-                NSLog("failed to open iTunes Store app")
+        //https://itunes.apple.com/us/album/igor/1463409338?app=itunes
+        if let albumURL = viewModel.albumURL {
+            UIApplication.shared.open(albumURL, options: [:]) { (success) in
+                if success {
+                    NSLog("opened iTunes Store app")
+                } else {
+                    NSLog("failed to open iTunes Store app")
+                }
             }
+        } else {
+            NSLog("should probably display an error that a URL not found?")
         }
     }
 }
