@@ -32,6 +32,9 @@
 		32F1D9E9229095E800DEBDF7 /* AlbumListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F1D9E6229095E800DEBDF7 /* AlbumListStoryboard.storyboard */; };
 		32F1D9EF229096EF00DEBDF7 /* AlbumListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F1D9EE229096EF00DEBDF7 /* AlbumListTableViewController.swift */; };
 		32F1D9F0229096EF00DEBDF7 /* AlbumListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F1D9EE229096EF00DEBDF7 /* AlbumListTableViewController.swift */; };
+		32F1D9F222909B0D00DEBDF7 /* AlbumsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F1D9F122909B0D00DEBDF7 /* AlbumsViewModel.swift */; };
+		32F1D9F522909F9800DEBDF7 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F1D9F322909F9800DEBDF7 /* AlbumTableViewCell.swift */; };
+		32F1D9F622909F9800DEBDF7 /* AlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F1D9F422909F9800DEBDF7 /* AlbumTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,9 @@
 		32F1D9E32290950D00DEBDF7 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		32F1D9E7229095E800DEBDF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AlbumListStoryboard.storyboard; sourceTree = "<group>"; };
 		32F1D9EE229096EF00DEBDF7 /* AlbumListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListTableViewController.swift; sourceTree = "<group>"; };
+		32F1D9F122909B0D00DEBDF7 /* AlbumsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewModel.swift; sourceTree = "<group>"; };
+		32F1D9F322909F9800DEBDF7 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
+		32F1D9F422909F9800DEBDF7 /* AlbumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +136,8 @@
 				32F1D9A32290788200DEBDF7 /* Info.plist */,
 				32F1D9E6229095E800DEBDF7 /* AlbumListStoryboard.storyboard */,
 				32F1D9EE229096EF00DEBDF7 /* AlbumListTableViewController.swift */,
+				32F1D9F722909F9C00DEBDF7 /* UITableViewCells */,
+				32F1D9F122909B0D00DEBDF7 /* AlbumsViewModel.swift */,
 				32F1D9ED2290969F00DEBDF7 /* Extension */,
 			);
 			path = TopAlbums;
@@ -179,6 +187,15 @@
 				32F1D9E32290950D00DEBDF7 /* UIStoryboard+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		32F1D9F722909F9C00DEBDF7 /* UITableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				32F1D9F322909F9800DEBDF7 /* AlbumTableViewCell.swift */,
+				32F1D9F422909F9800DEBDF7 /* AlbumTableViewCell.xib */,
+			);
+			path = UITableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +305,7 @@
 				32F1D9E8229095E800DEBDF7 /* AlbumListStoryboard.storyboard in Resources */,
 				32F1D9A22290788200DEBDF7 /* LaunchScreen.storyboard in Resources */,
 				32F1D9C62290799200DEBDF7 /* top100albums.json in Resources */,
+				32F1D9F622909F9800DEBDF7 /* AlbumTableViewCell.xib in Resources */,
 				32F1D99F2290788200DEBDF7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +338,8 @@
 				32F1D9DB2290828000DEBDF7 /* Link.swift in Sources */,
 				32F1D9DD2290828000DEBDF7 /* Feed.swift in Sources */,
 				32F1D9982290788100DEBDF7 /* AppDelegate.swift in Sources */,
+				32F1D9F522909F9800DEBDF7 /* AlbumTableViewCell.swift in Sources */,
+				32F1D9F222909B0D00DEBDF7 /* AlbumsViewModel.swift in Sources */,
 				32F1D9E42290950D00DEBDF7 /* UIStoryboard+Extension.swift in Sources */,
 				32F1D9EF229096EF00DEBDF7 /* AlbumListTableViewController.swift in Sources */,
 				32F1D9D92290828000DEBDF7 /* Author.swift in Sources */,
