@@ -64,6 +64,7 @@
                                     <outlet property="albumArtwork" destination="JuG-tX-Ofd" id="l1i-4m-cle"/>
                                     <outlet property="albumName" destination="Uy8-Sl-Fb2" id="82Z-cZ-R3p"/>
                                     <outlet property="artistName" destination="Dda-au-QYh" id="S3f-h7-K5N"/>
+                                    <segue destination="NDC-8C-xRL" kind="show" identifier="AlbumDetailStoryboard" id="eft-RN-0Jt"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmptyCell" rowHeight="100" id="CdV-Jb-xHg">
@@ -85,6 +86,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r5Y-d2-g2Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="170" y="127"/>
+        </scene>
+        <!--AlbumDetailsStoryboard-->
+        <scene sceneID="0Kc-Hn-P3u">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AlbumDetailsStoryboard" id="NDC-8C-xRL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mxe-PC-LcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="827" y="127"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RUn-8w-zk0">

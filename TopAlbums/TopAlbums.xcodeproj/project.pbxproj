@@ -43,6 +43,9 @@
 		32F1DA092290AF8C00DEBDF7 /* AlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F1DA052290AF8C00DEBDF7 /* AlbumTableViewCell.xib */; };
 		32F1DA0A2290AF8C00DEBDF7 /* AlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F1DA052290AF8C00DEBDF7 /* AlbumTableViewCell.xib */; };
 		32F1DA0B2290AF8C00DEBDF7 /* AlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F1DA052290AF8C00DEBDF7 /* AlbumTableViewCell.xib */; };
+		32F1DA0E2290AFD300DEBDF7 /* AlbumDetailsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F1DA0D2290AFD300DEBDF7 /* AlbumDetailsStoryboard.storyboard */; };
+		32F1DA0F2290AFD300DEBDF7 /* AlbumDetailsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F1DA0D2290AFD300DEBDF7 /* AlbumDetailsStoryboard.storyboard */; };
+		32F1DA102290AFD300DEBDF7 /* AlbumDetailsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F1DA0D2290AFD300DEBDF7 /* AlbumDetailsStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,7 @@
 		32F1DA002290AF3400DEBDF7 /* AlbumsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsViewModel.swift; sourceTree = "<group>"; };
 		32F1DA042290AF8C00DEBDF7 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		32F1DA052290AF8C00DEBDF7 /* AlbumTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumTableViewCell.xib; sourceTree = "<group>"; };
+		32F1DA0D2290AFD300DEBDF7 /* AlbumDetailsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlbumDetailsStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +147,7 @@
 				32F1D99E2290788200DEBDF7 /* Assets.xcassets */,
 				32F1D9A02290788200DEBDF7 /* LaunchScreen.storyboard */,
 				32F1D9A32290788200DEBDF7 /* Info.plist */,
-				32F1D9F92290AE4000DEBDF7 /* AlbumDetailViewController.swift */,
+				32F1DA0C2290AFC300DEBDF7 /* AlbumDetails */,
 				32F1DA002290AF3400DEBDF7 /* AlbumsViewModel.swift */,
 				32F1D9F82290AE1C00DEBDF7 /* AlbumList */,
 				32F1D9F722909F9C00DEBDF7 /* UITableViewCells */,
@@ -214,6 +218,15 @@
 				32F1D9FC2290AE8000DEBDF7 /* top100albums.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		32F1DA0C2290AFC300DEBDF7 /* AlbumDetails */ = {
+			isa = PBXGroup;
+			children = (
+				32F1D9F92290AE4000DEBDF7 /* AlbumDetailViewController.swift */,
+				32F1DA0D2290AFD300DEBDF7 /* AlbumDetailsStoryboard.storyboard */,
+			);
+			path = AlbumDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +337,7 @@
 				32F1D9A22290788200DEBDF7 /* LaunchScreen.storyboard in Resources */,
 				32F1D99F2290788200DEBDF7 /* Assets.xcassets in Resources */,
 				32F1DA092290AF8C00DEBDF7 /* AlbumTableViewCell.xib in Resources */,
+				32F1DA0E2290AFD300DEBDF7 /* AlbumDetailsStoryboard.storyboard in Resources */,
 				32F1D9FD2290AE8100DEBDF7 /* top100albums.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32F1DA0F2290AFD300DEBDF7 /* AlbumDetailsStoryboard.storyboard in Resources */,
 				32F1D9E9229095E800DEBDF7 /* AlbumListStoryboard.storyboard in Resources */,
 				32F1D9FE2290AE8100DEBDF7 /* top100albums.json in Resources */,
 				32F1DA0A2290AF8C00DEBDF7 /* AlbumTableViewCell.xib in Resources */,
@@ -343,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32F1D9FF2290AE8100DEBDF7 /* top100albums.json in Resources */,
+				32F1DA102290AFD300DEBDF7 /* AlbumDetailsStoryboard.storyboard in Resources */,
 				32F1DA0B2290AF8C00DEBDF7 /* AlbumTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
