@@ -77,7 +77,7 @@ class AlbumListTableViewController: UITableViewController {
             NSLog("error: could not instantiate AlbumTableviewCell")
             return UITableViewCell()
         }
-    
+        
         cell.configureCell(viewModel: viewModel[indexPath.row])
 
         return cell

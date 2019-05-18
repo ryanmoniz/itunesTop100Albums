@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,16 +14,63 @@
         <scene sceneID="WNi-DB-Ul5">
             <objects>
                 <tableViewController storyboardIdentifier="AlbumListTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xMd-I8-IiM" customClass="AlbumListTableViewController" customModule="TopAlbums" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zHG-yp-O0S">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="zHG-yp-O0S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CdV-Jb-xHg">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumIdentifierCell" rowHeight="100" id="BrS-Jb-yfr" customClass="AlbumTableViewCell" customModule="TopAlbums" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BrS-Jb-yfr" id="Srw-YG-QYB">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="album-unknown" translatesAutoresizingMaskIntoConstraints="NO" id="JuG-tX-Ofd">
+                                            <rect key="frame" x="1" y="0.0" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="VKC-lp-QBz"/>
+                                                <constraint firstAttribute="height" constant="100" id="yNj-4e-ZKD"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="D2s-lv-hZn">
+                                            <rect key="frame" x="108" y="6" width="300" height="50.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Name could be very long" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uy8-Sl-Fb2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name could also be very long" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dda-au-QYh">
+                                                    <rect key="frame" x="0.0" y="33.5" width="300" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="JuG-tX-Ofd" firstAttribute="leading" secondItem="Srw-YG-QYB" secondAttribute="leading" constant="1" id="0AV-wK-9ig"/>
+                                        <constraint firstAttribute="trailing" secondItem="D2s-lv-hZn" secondAttribute="trailing" constant="6" id="6sk-Ii-xgb"/>
+                                        <constraint firstItem="D2s-lv-hZn" firstAttribute="top" secondItem="Srw-YG-QYB" secondAttribute="top" constant="6" id="TMu-9K-rD7"/>
+                                        <constraint firstItem="D2s-lv-hZn" firstAttribute="leading" secondItem="JuG-tX-Ofd" secondAttribute="trailing" constant="7" id="bfD-Sv-YPK"/>
+                                        <constraint firstItem="JuG-tX-Ofd" firstAttribute="top" secondItem="Srw-YG-QYB" secondAttribute="top" id="eiF-nc-3Rg"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <viewLayoutGuide key="safeArea" id="oc1-kt-yC4"/>
+                                <connections>
+                                    <outlet property="albumArtwork" destination="JuG-tX-Ofd" id="l1i-4m-cle"/>
+                                    <outlet property="albumName" destination="Uy8-Sl-Fb2" id="82Z-cZ-R3p"/>
+                                    <outlet property="artistName" destination="Dda-au-QYh" id="S3f-h7-K5N"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="CdV-Jb-xHg">
+                                <rect key="frame" x="0.0" y="128" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CdV-Jb-xHg" id="fBv-OM-x9O">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -55,4 +103,7 @@
             <point key="canvasLocation" x="-749" y="127"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="album-unknown" width="100" height="100"/>
+    </resources>
 </document>
