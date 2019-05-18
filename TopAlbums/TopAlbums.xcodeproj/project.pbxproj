@@ -14,6 +14,8 @@
 		32F1D9A22290788200DEBDF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F1D9A02290788200DEBDF7 /* LaunchScreen.storyboard */; };
 		32F1D9AD2290788200DEBDF7 /* TopAlbumsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F1D9AC2290788200DEBDF7 /* TopAlbumsTests.swift */; };
 		32F1D9B82290788200DEBDF7 /* TopAlbumsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F1D9B72290788200DEBDF7 /* TopAlbumsUITests.swift */; };
+		32F1D9C62290799200DEBDF7 /* top100albums.json in Resources */ = {isa = PBXBuildFile; fileRef = 32F1D9C52290799200DEBDF7 /* top100albums.json */; };
+		32F1D9C72290799200DEBDF7 /* top100albums.json in Resources */ = {isa = PBXBuildFile; fileRef = 32F1D9C52290799200DEBDF7 /* top100albums.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,7 @@
 		32F1D9B32290788200DEBDF7 /* TopAlbumsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TopAlbumsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32F1D9B72290788200DEBDF7 /* TopAlbumsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlbumsUITests.swift; sourceTree = "<group>"; };
 		32F1D9B92290788200DEBDF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32F1D9C52290799200DEBDF7 /* top100albums.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = top100albums.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,7 @@
 		32F1D98B2290788100DEBDF7 = {
 			isa = PBXGroup;
 			children = (
+				32F1D9C82290799D00DEBDF7 /* Resources */,
 				32F1D9962290788100DEBDF7 /* TopAlbums */,
 				32F1D9AB2290788200DEBDF7 /* TopAlbumsTests */,
 				32F1D9B62290788200DEBDF7 /* TopAlbumsUITests */,
@@ -123,6 +127,14 @@
 				32F1D9B92290788200DEBDF7 /* Info.plist */,
 			);
 			path = TopAlbumsUITests;
+			sourceTree = "<group>";
+		};
+		32F1D9C82290799D00DEBDF7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				32F1D9C52290799200DEBDF7 /* top100albums.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32F1D9A22290788200DEBDF7 /* LaunchScreen.storyboard in Resources */,
+				32F1D9C62290799200DEBDF7 /* top100albums.json in Resources */,
 				32F1D99F2290788200DEBDF7 /* Assets.xcassets in Resources */,
 				32F1D99D2290788100DEBDF7 /* Main.storyboard in Resources */,
 			);
@@ -239,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32F1D9C72290799200DEBDF7 /* top100albums.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
