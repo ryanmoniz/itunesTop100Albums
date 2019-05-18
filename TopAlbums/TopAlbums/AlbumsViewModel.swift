@@ -18,11 +18,13 @@ struct AlbumsViewModel {
     
     
     
-    init(withAlbumName albumName:String, artist:String, albumArtURL:String) {
+    init(withAlbumName albumName:String, artist:String, albumArtURL:String?) {
         self.albumName = albumName
         self.artistName = artist
         
-        self.albumArtURL = URL(string: albumArtURL)
+        if let _albumArtURL = albumArtURL {
+            self.albumArtURL = URL(string: _albumArtURL)
+        }
     }
     
     

@@ -31,18 +31,35 @@ class AlbumListTableViewController: UITableViewController {
                 
                 let albumsFeed = try decoder.decode(Feed.self, from: jsonData)
                 print(albumsFeed)
+                
+                setupViewModel(feed:albumsFeed)
             }
         } catch {
             print(error)
         }
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
         self.title = "Top 100 Albums"
+    }
+    
+    func setupViewModel(feed:Feed) {
+        if let results = feed.results {
+            for result in results {
+                var name = "Unknown", artistName = "Unknown", artworkName:String? = nil
+                if let _name = result.name {
+                    name = _name
+                }
+                if let _artist = result.artistName {
+                    artistName = _artist
+                }
+                if let _artwork = result.artworkUrl100 {
+                    artworkName = _artwork
+                }
+                let vm = AlbumsViewModel(withAlbumName: name, artist: artistName, albumArtURL: artworkName)
+                self.viewModel.append(vm)
+            }
+        } else {
+            NSLog("0 results in feed")
+        }
     }
 
     // MARK: - Table view data source
