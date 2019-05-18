@@ -29,9 +29,8 @@ class TopAlbumsTests: XCTestCase {
 
         do {
             let jsonData = try Data(contentsOf: _jsonFile)
-            let albums = try JSONDecoder().decode(Album.self, from: jsonData)
-            
-            
+            let albumsFeed = try JSONDecoder().decode(RootClass.self, from: jsonData)
+            XCTAssertTrue(albumsFeed.feed?.title == "Top Albums")
             
         } catch {
             XCTFail("error loading contents of json file.\(error.localizedDescription)")
