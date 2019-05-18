@@ -19,6 +19,8 @@ class AlbumListTableViewController: UITableViewController {
     var cache:NSCache<AnyObject, AnyObject> = NSCache()
 
     
+    var itunesAPIClient = RSSiTunesAPIClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,25 +28,33 @@ class AlbumListTableViewController: UITableViewController {
         task = URLSessionDownloadTask()
         cache = NSCache()
 
-        let bundle = Bundle(for: type(of: self))
-        guard let _jsonFilePath = bundle.url(forResource: "top100albums", withExtension: "json") else {
-            print("Missing file: top100albums.json")
-            return
-        }
+        //load from network
+        itunesAPIClient.getTop100AlbumsRequest { (error, feed) in
+            if let _feed = feed {
+                self.setupViewModel(feed:_feed)
+            } else {
+                //load from disk
+                let bundle = Bundle(for: type(of: self))
+                guard let _jsonFilePath = bundle.url(forResource: "top100albums", withExtension: "json") else {
+                    print("Missing file: top100albums.json")
+                    return
+                }
                 
-        do {            
-            let jsonString = try String(contentsOf: _jsonFilePath)
-            if let jsonData = jsonString.data(using: .utf8) {
-                let decoder = JSONDecoder()
-                
-                
-                let albumsFeed = try decoder.decode(Feed.self, from: jsonData)
-                print(albumsFeed)
-                
-                setupViewModel(feed:albumsFeed)
+                do {
+                    let jsonString = try String(contentsOf: _jsonFilePath)
+                    if let jsonData = jsonString.data(using: .utf8) {
+                        let decoder = JSONDecoder()
+                        
+                        
+                        let albumsFeed = try decoder.decode(Feed.self, from: jsonData)
+                        print(albumsFeed)
+                        
+                        self.setupViewModel(feed:albumsFeed)
+                    }
+                } catch {
+                    print(error)
+                }
             }
-        } catch {
-            print(error)
         }
         
         self.title = "Top 100 Albums"
@@ -84,10 +94,10 @@ class AlbumListTableViewController: UITableViewController {
         } else {
             NSLog("0 results in feed")
         }
-    }
-
-    func refreshTableViewWithAlbumArt() {
         
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - Table view data source
