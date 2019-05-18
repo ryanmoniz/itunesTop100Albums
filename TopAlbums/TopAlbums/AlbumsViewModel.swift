@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AlbumsViewModel {
+public struct AlbumsViewModel {
     
     var albumName: String
     
