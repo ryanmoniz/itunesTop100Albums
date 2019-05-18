@@ -28,19 +28,28 @@ final class RSSiTunesAPIClient: Backend {
             if (error != nil) {
                 print(error!.localizedDescription)
             } else {
-                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let _data = data else {
                     callback(nil, nil)
                     return
                 }
                 
                 NSLog("received 200, decoding data and sending back")
                 
+                let decoder = JSONDecoder()
+                do {
+                    let albumsFeed = try decoder.decode(Feed.self, from: _data)
+                    print(albumsFeed)
+                    callback(nil, albumsFeed)
+                }
+                catch {
+                    print(error)
+                    callback(error as NSError, nil)
+                }
             }
         })
-        
+
         dataTask.resume()
-    }
-    
+    }    
     
     
     
