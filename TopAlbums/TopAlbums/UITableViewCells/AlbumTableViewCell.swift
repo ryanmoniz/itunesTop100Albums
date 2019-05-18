@@ -28,7 +28,14 @@ class AlbumTableViewCell: UITableViewCell {
     }
     
     func configureCell(viewModel:AlbumsViewModel) {
-        //configure view based on view model
+        self.albumName.text = viewModel.albumName
+        self.artistName.text = viewModel.artistName
+        
+        if let imageURL = viewModel.albumArtURL {
+            //dispatch lazy load of image
+        } else {
+            self.albumArtwork.image = UIImage(named: "album-unknown")
+        }
     }
     
 }
