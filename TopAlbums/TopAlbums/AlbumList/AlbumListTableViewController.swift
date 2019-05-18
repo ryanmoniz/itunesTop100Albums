@@ -146,6 +146,7 @@ class AlbumListTableViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let _selectedViewModel = viewModel[indexPath.row]
                 viewController.viewModel = _selectedViewModel
+                viewController.albumArtImage = self.cache.object(forKey: indexPath.row as AnyObject) as? UIImage
             }
         }
     }

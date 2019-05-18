@@ -17,6 +17,7 @@ class AlbumDetailViewController: UIViewController {
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var copyright: UILabel!
     
+    var albumArtImage: UIImage?
     var viewModel : AlbumsViewModel!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +28,12 @@ class AlbumDetailViewController: UIViewController {
         self.genre.text = viewModel.genre
         self.releaseDate.text = viewModel.releaseDate
         self.copyright.text = viewModel.copyright
+        
+        if let _albumArtImage = albumArtImage {
+            self.albumImageView.image = _albumArtImage
+        } else {
+            self.albumImageView.image = UIImage(named: "album-unknown")
+        }
     }
     
     @IBAction func purchaseAction(_ sender: Any) {
