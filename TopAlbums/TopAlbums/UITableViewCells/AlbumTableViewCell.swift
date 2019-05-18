@@ -9,6 +9,7 @@
 import UIKit
 
 let AlbumIdentifierCell = "AlbumIdentifierCell"
+let AlbumArtworkKey = "albumArtwork"
 
 class AlbumTableViewCell: UITableViewCell {
     
@@ -39,24 +40,34 @@ class AlbumTableViewCell: UITableViewCell {
         if let imageURL = viewModel.albumArtURL {
             //dispatch lazy load of image
             
-            task = session.downloadTask(with: imageURL, completionHandler: { (location, response, error) in
-                if let _location = location {
-                    do {
-                        let data = try Data(contentsOf: _location)
-                        DispatchQueue.main.async {
-                            let img = UIImage(data: data)
-                            self.albumArtwork.image = img
+            if (self.cache.object(forKey: AlbumArtworkKey as AnyObject) != nil) {
+                //use the cache image
+                self.albumArtwork.image = self.cache.object(forKey: (AlbumArtworkKey as AnyObject)) as? UIImage
+            } else {
+                task = session.downloadTask(with: imageURL, completionHandler: { (location, response, error) in
+                    if let _location = location {
+                        do {
+                            let data = try Data(contentsOf: _location)
+                            DispatchQueue.main.async {
+                                if let img = UIImage(data: data) {
+                                    self.albumArtwork.image = img
+                                    self.cache.setObject(img, forKey: AlbumArtworkKey as AnyObject)
+                                } else {
+                                    NSLog("error could not decode image?")
+                                    self.albumArtwork.image = UIImage(named: "album-unknown")
+                                }
+                            }
+                        } catch {
+                            NSLog("error:\(error.localizedDescription)")
+                            self.albumArtwork.image = UIImage(named: "album-unknown")
                         }
-                    } catch {
-                        NSLog("error:\(error.localizedDescription)")
+                    } else {
+                        NSLog("could not download album artwork?")
                         self.albumArtwork.image = UIImage(named: "album-unknown")
                     }
-                } else {
-                    NSLog("could not download album artwork?")
-                    self.albumArtwork.image = UIImage(named: "album-unknown")
-                }
-            })
-            task.resume()
+                })
+                task.resume()
+            }
         } else {
             self.albumArtwork.image = UIImage(named: "album-unknown")
         }
