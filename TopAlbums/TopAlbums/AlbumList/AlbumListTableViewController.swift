@@ -51,7 +51,9 @@ class AlbumListTableViewController: UITableViewController {
     func setupViewModel(feed:Feed) {
         if let results = feed.results {
             for result in results {
-                var name = "Unknown", artistName = "Unknown", artworkName:String? = nil
+                var name = "Unknown", artistName = "Unknown", artworkName:String? = nil, releaseDate = "Unknown", copyright = "Unknown"
+                var genre = [Genre]()
+                
                 if let _name = result.name {
                     name = _name
                 }
@@ -61,7 +63,17 @@ class AlbumListTableViewController: UITableViewController {
                 if let _artwork = result.artworkUrl100 {
                     artworkName = _artwork
                 }
-                let vm = AlbumsViewModel(withAlbumName: name, artist: artistName, albumArtURL: artworkName)
+                if let _releaseDate = result.releaseDate {
+                    releaseDate = _releaseDate
+                }
+                if let _copyright = result.copyright {
+                    copyright = _copyright
+                }
+                if let _genres = result.genres {
+                    genre = _genres
+                }
+                
+                let vm = AlbumsViewModel(withAlbumName: name, artist: artistName, albumArtURL: artworkName, genreArray: genre, releaseDate: releaseDate, copyright: copyright)
                 self.viewModel.append(vm)
             }
         } else {

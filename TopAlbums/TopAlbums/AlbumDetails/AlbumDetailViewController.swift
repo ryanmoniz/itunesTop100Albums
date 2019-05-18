@@ -24,6 +24,9 @@ class AlbumDetailViewController: UIViewController {
         
         self.albumName.text = viewModel.albumName
         self.artistName.text = viewModel.artistName
+        self.genre.text = viewModel.genre
+        self.releaseDate.text = viewModel.releaseDate
+        self.copyright.text = viewModel.copyright
     }
     
     @IBAction func purchaseAction(_ sender: Any) {
