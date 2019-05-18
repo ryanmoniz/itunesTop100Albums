@@ -22,7 +22,8 @@ class AlbumDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
+        self.albumName.text = viewModel.albumName
+        self.artistName.text = viewModel.artistName
     }
     
     @IBAction func purchaseAction(_ sender: Any) {
