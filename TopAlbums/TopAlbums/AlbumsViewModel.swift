@@ -18,6 +18,8 @@ public struct AlbumsViewModel {
     var copyright: String
     
     
+    
+    
     init(withAlbumName albumName:String, artist:String, albumArtURL:String?, genreArray:[Genre], releaseDate:String, copyright:String) {
         self.albumName = albumName
         self.artistName = artist
@@ -33,9 +35,20 @@ public struct AlbumsViewModel {
             }
         }
         genre = genrelist.joined(separator: ", ")
-
         
-        self.releaseDate = releaseDate
+        let inputFormatter = DateFormatter()
+        //input is : 2019-05-17
+        inputFormatter.dateFormat = "yyyy-mm-dd"
+        if let date = inputFormatter.date(from: releaseDate) as NSDate? {
+            inputFormatter.dateFormat = "MMMM dd, yyyy" //outputs January, 5, 2019
+            let finalReleaseDate = inputFormatter.string(from: date as Date)
+            self.releaseDate = finalReleaseDate
+
+        } else {
+            NSLog("date:\(releaseDate)")
+            self.releaseDate = releaseDate
+        }
+        
         self.copyright = copyright
     }
     
