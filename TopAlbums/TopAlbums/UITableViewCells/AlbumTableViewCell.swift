@@ -30,13 +30,8 @@ class AlbumTableViewCell: UITableViewCell {
         self.albumName.text = viewModel.albumName
         self.artistName.text = viewModel.artistName
         
-        if let imageURL = viewModel.albumArtURL {
-            //dispatch lazy load of image
-            // FIXME: issue
-            // TODO: fix 
-        } else {
-            self.albumArtwork.image = UIImage(named: "album-unknown")
-        }
+        self.albumArtwork.image = UIImage(named: "album-unknown")
+        //album artwork will be lazy loaded in main tableview controller
     }
     
 }
