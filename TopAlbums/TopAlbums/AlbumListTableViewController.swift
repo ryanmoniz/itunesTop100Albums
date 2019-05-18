@@ -32,14 +32,6 @@ class AlbumListTableViewController: UITableViewController {
                 let albumsFeed = try decoder.decode(Feed.self, from: jsonData)
                 print(albumsFeed)
             }
-            
-            
-            if let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
-                // try to read out a string array
-                if let names = json["feed"] {
-                    print(names)
-                }
-            }
         } catch {
             print(error)
         }
@@ -64,10 +56,12 @@ class AlbumListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        
-        // Configure the cell...
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AlbumIdentifierCell, for: indexPath) as? AlbumTableViewCell else {
+            NSLog("error: could not instantiate AlbumTableviewCell")
+            return UITableViewCell()
+        }
+    
+        cell.configureCell(viewModel: viewModel[indexPath.row])
 
         return cell
     }
