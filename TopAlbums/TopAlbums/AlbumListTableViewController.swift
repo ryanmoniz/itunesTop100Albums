@@ -91,6 +91,7 @@ class AlbumListTableViewController: UITableViewController {
         
         cell.configureCell(viewModel: viewModel[indexPath.row])
         
+        //Future: wrap code inside NSOperation task
         if (self.cache.object(forKey: (indexPath as NSIndexPath).row as AnyObject) != nil) {
             //use the cache image
             cell.albumArtwork.image = self.cache.object(forKey: (indexPath as NSIndexPath).row as AnyObject) as? UIImage
